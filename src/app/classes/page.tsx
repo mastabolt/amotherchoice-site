@@ -51,10 +51,10 @@ export default function ClassesPage() {
                 <Image
                   src={
                     index === 0
-                      ? "/classes3.jpeg"
+                      ? "/classes1.jpg"
                       : index === 1
-                        ? "/classes2.jpg"
-                        : "/classes1.jpg"
+                        ? "/classes3.jpeg"
+                        : "/classes2.jpg"
                   }
                   alt={session.title}
                   width={2560}
