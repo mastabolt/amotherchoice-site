@@ -44,10 +44,10 @@ export default async function BookPage({
             </div>
           </div>
 
-          <div className="rounded-[2rem] bg-slate-900 p-8 text-white shadow-[0_30px_80px_rgba(15,23,42,0.12)] sm:p-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-200">Phase 1 Notice</p>
+          <div className="rounded-[2rem] bg-rose-100 p-8 text-slate-900 shadow-[0_30px_80px_rgba(15,23,42,0.08)] sm:p-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">Phase 1 Notice</p>
             <h2 className="mt-4 text-3xl font-semibold">Registration and payment coming in Phase 2</h2>
-            <p className="mt-5 text-base leading-8 text-slate-200">
+            <p className="mt-5 text-base leading-8 text-slate-700">
               This page is intentionally structured around a selected class session so the next phase can connect real registrations, Stripe Checkout, and capacity tracking.
             </p>
             <div className="mt-8 flex flex-col gap-4">

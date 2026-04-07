@@ -65,7 +65,7 @@ export default function ContactPage() {
                 />
                 <button
                   type="button"
-                  className="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white"
+                  className="inline-flex items-center justify-center rounded-full bg-rose-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-rose-600"
                 >
                   Send Message (Phase 1 Placeholder)
                 </button>

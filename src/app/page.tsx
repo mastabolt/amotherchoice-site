@@ -53,9 +53,9 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="mt-5 rounded-[1.5rem] bg-slate-900 px-6 py-7 text-white">
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-200">Overview</p>
-                <p className="mt-3 text-lg leading-8 text-slate-100">
+              <div className="mt-5 rounded-[1.5rem] bg-rose-100 px-6 py-7 text-slate-900">
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">Overview</p>
+                <p className="mt-3 text-lg leading-8 text-slate-700">
                   Explore classes, learn who we are, and reach out for support through clearly separated pages built for a real business website.
                 </p>
               </div>
@@ -141,7 +141,7 @@ export default function Home() {
                 </dl>
                 <Link
                   href={`/book/${session.id}`}
-                  className="mt-7 inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700"
+                  className="mt-7 inline-flex items-center justify-center rounded-full bg-rose-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-rose-600"
                 >
                   Book This Class
                 </Link>

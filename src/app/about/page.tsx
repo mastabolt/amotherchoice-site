@@ -44,10 +44,10 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="mt-12 rounded-[2rem] bg-slate-900 px-8 py-10 text-white shadow-[0_30px_80px_rgba(15,23,42,0.12)]">
-          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-200">Approach</p>
+        <div className="mt-12 rounded-[2rem] bg-rose-100 px-8 py-10 text-slate-900 shadow-[0_30px_80px_rgba(15,23,42,0.08)]">
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">Approach</p>
           <h2 className="mt-4 text-3xl font-semibold">We build trust through calm design, clear education, and compassionate support.</h2>
-          <p className="mt-4 max-w-3xl text-base leading-8 text-slate-200">
+          <p className="mt-4 max-w-3xl text-base leading-8 text-slate-700">
             That means clear page structure, thoughtful communication, and offerings that feel both credible and welcoming. This site is intentionally organized so visitors can move from overview, to deeper understanding, to class selection without confusion.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">

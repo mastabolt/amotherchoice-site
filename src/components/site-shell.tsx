@@ -33,7 +33,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             ))}
             <Link
               href="/classes"
-              className="rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-700"
+              className="rounded-full bg-rose-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-rose-600"
             >
               View Classes
             </Link>
