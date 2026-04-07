@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { classSessions } from "@/data/classSessions";
 import { Container, SectionIntro } from "@/components/ui";
@@ -6,11 +7,24 @@ export default function ClassesPage() {
   return (
     <section className="py-20 sm:py-24">
       <Container>
-        <SectionIntro
-          eyebrow="Classes"
-          title="Upcoming trainings and support sessions"
-          description="This enrollment page is structured around class sessions, not appointment slots, so multiple attendees can register for the same offering in future phases."
-        />
+        <div className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/80 p-3 shadow-[0_20px_50px_rgba(15,23,42,0.06)]">
+          <Image
+            src="/classes-banner-warmth.png"
+            alt="A warm mother and baby image for the classes page"
+            width={1536}
+            height={1024}
+            className="h-[220px] w-full rounded-[1.5rem] object-cover sm:h-[280px]"
+            priority
+          />
+        </div>
+
+        <div className="mt-10">
+          <SectionIntro
+            eyebrow="Classes"
+            title="Upcoming trainings and support sessions"
+            description="This enrollment page is structured around class sessions, not appointment slots, so multiple attendees can register for the same offering in future phases."
+          />
+        </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
           {classSessions.map((session) => (
