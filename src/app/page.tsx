@@ -12,19 +12,15 @@ export default function Home() {
         <Container>
           <div className="grid items-start gap-14 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <div className="grid gap-4 sm:grid-cols-3">
-                <div className="rounded-[1.5rem] border border-white/80 bg-white/85 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.05)]">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-mauve)]">Professionals</p>
-                  <p className="mt-3 text-sm leading-6 text-slate-700">Certification-focused childbirth and lactation education.</p>
-                </div>
-                <div className="rounded-[1.5rem] border border-white/80 bg-white/85 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.05)]">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-mauve)]">Families</p>
-                  <p className="mt-3 text-sm leading-6 text-slate-700">Lactation support, postpartum guidance, and nurturing care.</p>
-                </div>
-                <div className="rounded-[1.5rem] border border-white/80 bg-white/85 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.05)]">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-mauve)]">Format</p>
-                  <p className="mt-3 text-sm leading-6 text-slate-700">Structured classes, clear pathways, and real next steps.</p>
-                </div>
+              <div className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/80 p-3 shadow-[0_20px_50px_rgba(15,23,42,0.06)]">
+                <Image
+                  src="/secondary-hero-warmth.png"
+                  alt="A warm moment between a mother and her baby"
+                  width={1536}
+                  height={1024}
+                  className="h-[210px] w-full rounded-[1.5rem] object-cover sm:h-[250px]"
+                  priority
+                />
               </div>
               <p className="mt-8 text-sm font-semibold uppercase tracking-[0.28em] text-rose-500">
                 For Families and Professionals
