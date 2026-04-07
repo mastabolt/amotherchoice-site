@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { classSessions } from "@/data/classSessions";
 import { Container, PrimaryButton, SecondaryButton } from "@/components/ui";
@@ -12,7 +13,7 @@ export default function Home() {
           <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-rose-500">
-                For Professionals + Families
+                For Families and Professionals
               </p>
               <h1 className="mt-6 max-w-3xl font-serif text-5xl font-semibold leading-tight text-slate-900 sm:text-6xl">
                 Education, training, and perinatal support with a clear path forward.
@@ -25,8 +26,18 @@ export default function Home() {
                 <SecondaryButton href="/about">Learn About Us</SecondaryButton>
               </div>
             </div>
-            <div className="rounded-[2rem] border border-white/80 bg-white/80 p-8 shadow-[0_30px_80px_rgba(15,23,42,0.08)] backdrop-blur">
-              <div className="grid gap-5 sm:grid-cols-2">
+            <div className="rounded-[2rem] border border-white/80 bg-white/80 p-5 shadow-[0_30px_80px_rgba(15,23,42,0.08)] backdrop-blur sm:p-8">
+              <div className="overflow-hidden rounded-[1.75rem]">
+                <Image
+                  src="/mother-baby-hero.png"
+                  alt="A mother holding her baby"
+                  width={1536}
+                  height={1024}
+                  className="h-[260px] w-full object-cover sm:h-[320px]"
+                  priority
+                />
+              </div>
+              <div className="mt-5 grid gap-5 sm:grid-cols-2">
                 <div className="rounded-[1.5rem] bg-[var(--color-blush)] p-6">
                   <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">Professionals</p>
                   <h2 className="mt-3 text-2xl font-semibold text-slate-900">Training + Certification</h2>
