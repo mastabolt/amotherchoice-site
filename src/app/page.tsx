@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { classSessions } from "@/data/classSessions";
-import { Container, PrimaryButton, SecondaryButton, SectionIntro } from "@/components/ui";
+import { Container, PrimaryButton, SecondaryButton } from "@/components/ui";
 
-const featuredSessions = classSessions.slice(0, 3);
+const featuredSessions = classSessions.slice(0, 2);
 
 export default function Home() {
   return (
@@ -15,14 +15,14 @@ export default function Home() {
                 For Professionals + Families
               </p>
               <h1 className="mt-6 max-w-3xl font-serif text-5xl font-semibold leading-tight text-slate-900 sm:text-6xl">
-                Perinatal education, certification training, and nurturing support in one modern home.
+                Education, training, and perinatal support with a clear path forward.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-                A Mother Choice supports professionals growing their careers and families seeking calm, trusted guidance through childbirth education, lactation support, and postpartum care.
+                A Mother Choice is a modern multi-page platform for certification-focused trainings, family education, lactation support, and postpartum guidance.
               </p>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <PrimaryButton href="/classes">Explore Classes</PrimaryButton>
-                <SecondaryButton href="/contact">Contact Us</SecondaryButton>
+                <SecondaryButton href="/about">Learn About Us</SecondaryButton>
               </div>
             </div>
             <div className="rounded-[2rem] border border-white/80 bg-white/80 p-8 shadow-[0_30px_80px_rgba(15,23,42,0.08)] backdrop-blur">
@@ -31,21 +31,21 @@ export default function Home() {
                   <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">Professionals</p>
                   <h2 className="mt-3 text-2xl font-semibold text-slate-900">Training + Certification</h2>
                   <p className="mt-3 text-sm leading-7 text-slate-600">
-                    CAPPA training pathways, structured multi-day classes, and certification-focused education.
+                    CAPPA trainings and structured multi-day learning for certification-minded professionals.
                   </p>
                 </div>
                 <div className="rounded-[1.5rem] bg-[var(--color-sand)] p-6">
                   <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">Parents</p>
                   <h2 className="mt-3 text-2xl font-semibold text-slate-900">Support + Education</h2>
                   <p className="mt-3 text-sm leading-7 text-slate-600">
-                    Lactation guidance, postpartum education, and one-on-one support for growing families.
+                    Compassionate lactation support, postpartum education, and family-centered guidance.
                   </p>
                 </div>
               </div>
               <div className="mt-5 rounded-[1.5rem] bg-slate-900 px-6 py-7 text-white">
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-200">Our Promise</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-200">Overview</p>
                 <p className="mt-3 text-lg leading-8 text-slate-100">
-                  We support both professionals and families with compassionate, evidence-informed education that feels calm, modern, and deeply human.
+                  Explore classes, learn who we are, and reach out for support through clearly separated pages built for a real business website.
                 </p>
               </div>
             </div>
@@ -55,26 +55,36 @@ export default function Home() {
 
       <section className="py-18 sm:py-20">
         <Container>
-          <div className="grid gap-8 lg:grid-cols-2">
-            <div className="rounded-[2rem] border border-rose-100 bg-white p-8 shadow-[0_25px_60px_rgba(15,23,42,0.06)]">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">For Professionals</p>
-              <h2 className="mt-4 text-3xl font-semibold text-slate-900">Advance your training with certification-focused learning.</h2>
-              <ul className="mt-6 space-y-4 text-base leading-7 text-slate-600">
-                <li>CAPPA Childbirth Educator Training</li>
-                <li>CAPPA Certified Lactation Educator (CLE®) Training</li>
-                <li>Structured multi-day certification pathways</li>
-                <li>Professional education designed to feel supportive and practical</li>
-              </ul>
+          <div className="grid gap-8 lg:grid-cols-3">
+            <div className="rounded-[2rem] border border-white/90 bg-white p-8 shadow-[0_25px_60px_rgba(15,23,42,0.06)]">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">About</p>
+              <h2 className="mt-4 text-2xl font-semibold text-slate-900">Learn our mission, philosophy, and approach.</h2>
+              <p className="mt-4 text-base leading-7 text-slate-600">
+                Visit the About page for the deeper story behind A Mother Choice and how we serve both audiences with care.
+              </p>
+              <Link href="/about" className="mt-6 inline-flex text-sm font-semibold text-rose-500 transition hover:text-slate-900">
+                Go to About
+              </Link>
             </div>
-            <div className="rounded-[2rem] border border-emerald-100 bg-white p-8 shadow-[0_25px_60px_rgba(15,23,42,0.06)]">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">For Parents</p>
-              <h2 className="mt-4 text-3xl font-semibold text-slate-900">Receive warm, grounded support for pregnancy, feeding, and postpartum care.</h2>
-              <ul className="mt-6 space-y-4 text-base leading-7 text-slate-600">
-                <li>Lactation support and feeding education</li>
-                <li>Postpartum care guidance for new mothers</li>
-                <li>One-on-one support and family-centered education</li>
-                <li>Resources designed to build confidence and calm</li>
-              </ul>
+            <div className="rounded-[2rem] border border-white/90 bg-white p-8 shadow-[0_25px_60px_rgba(15,23,42,0.06)]">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">Classes</p>
+              <h2 className="mt-4 text-2xl font-semibold text-slate-900">Browse class sessions and choose the right fit.</h2>
+              <p className="mt-4 text-base leading-7 text-slate-600">
+                The Classes page is the main enrollment hub, with session details, pricing, capacity, and booking paths.
+              </p>
+              <Link href="/classes" className="mt-6 inline-flex text-sm font-semibold text-rose-500 transition hover:text-slate-900">
+                Go to Classes
+              </Link>
+            </div>
+            <div className="rounded-[2rem] border border-white/90 bg-white p-8 shadow-[0_25px_60px_rgba(15,23,42,0.06)]">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">Contact</p>
+              <h2 className="mt-4 text-2xl font-semibold text-slate-900">Ask questions or request guidance.</h2>
+              <p className="mt-4 text-base leading-7 text-slate-600">
+                Reach out through the Contact page for support, class questions, or help choosing the best next step.
+              </p>
+              <Link href="/contact" className="mt-6 inline-flex text-sm font-semibold text-rose-500 transition hover:text-slate-900">
+                Go to Contact
+              </Link>
             </div>
           </div>
         </Container>
@@ -82,12 +92,19 @@ export default function Home() {
 
       <section className="py-18 sm:py-20">
         <Container>
-          <SectionIntro
-            eyebrow="Featured Classes"
-            title="Upcoming sessions designed for real enrollment, clear next steps, and a polished experience."
-            description="Phase 1 includes mock session data so the site already feels like a credible class enrollment platform, with room for registration and Stripe in the next phase."
-          />
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          <div className="flex items-end justify-between gap-6">
+            <div className="max-w-2xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">Featured Classes</p>
+              <h2 className="mt-4 text-3xl font-semibold text-slate-900">A quick preview of upcoming sessions.</h2>
+              <p className="mt-4 text-base leading-8 text-slate-600">
+                This is a homepage snapshot only. Full enrollment browsing lives on the dedicated Classes page.
+              </p>
+            </div>
+            <div className="hidden sm:block">
+              <SecondaryButton href="/classes">View All Classes</SecondaryButton>
+            </div>
+          </div>
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
             {featuredSessions.map((session) => (
               <article
                 key={session.id}
@@ -107,10 +124,6 @@ export default function Home() {
                     <dd className="text-right text-slate-700">{session.startDate} - {session.endDate}</dd>
                   </div>
                   <div className="flex justify-between gap-4">
-                    <dt>Capacity</dt>
-                    <dd className="text-slate-700">{session.capacity} seats</dd>
-                  </div>
-                  <div className="flex justify-between gap-4">
                     <dt>Price</dt>
                     <dd className="text-slate-700">${session.price}</dd>
                   </div>
@@ -127,37 +140,14 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="py-18 sm:py-20">
-        <Container>
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="rounded-[2rem] bg-slate-900 p-8 text-white shadow-[0_30px_80px_rgba(15,23,42,0.12)]">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-200">Why Choose A Mother Choice</p>
-              <h2 className="mt-4 text-3xl font-semibold">A calm, professional experience built around trust.</h2>
-            </div>
-            <div className="grid gap-5 sm:grid-cols-2">
-              {[
-                "Dual-audience positioning for professionals and families",
-                "Warm, supportive brand presentation without losing professionalism",
-                "Class-centered structure ready for multi-attendee registration in Phase 2",
-                "Clear pathways to classes, support, and contact from day one",
-              ].map((item) => (
-                <div key={item} className="rounded-[1.5rem] border border-white/90 bg-white p-6 text-base leading-7 text-slate-600 shadow-[0_20px_50px_rgba(15,23,42,0.05)]">
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
-
       <section className="pb-20 pt-10 sm:pb-24">
         <Container>
           <div className="rounded-[2.25rem] bg-[var(--color-blush)] px-8 py-12 shadow-[0_25px_70px_rgba(15,23,42,0.06)] sm:px-12">
             <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-2xl">
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">Ready to Begin?</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">Next Step</p>
                 <h2 className="mt-3 text-3xl font-semibold text-slate-900 sm:text-4xl">
-                  Explore available classes or reach out for guidance on the best next step.
+                  Use the navigation to explore the site the way a real visitor would.
                 </h2>
               </div>
               <div className="flex flex-col gap-4 sm:flex-row">
