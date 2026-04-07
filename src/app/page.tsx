@@ -39,8 +39,8 @@ export default function Home() {
             <div className="rounded-[2rem] border border-white/80 bg-white/80 p-5 shadow-[0_30px_80px_rgba(15,23,42,0.08)] backdrop-blur sm:p-8">
               <div className="overflow-hidden rounded-[1.75rem]">
                 <Image
-                  src="/mother-baby-hero.png"
-                  alt="A mother holding her baby"
+                  src="/baby-alone-hero.png"
+                  alt="A baby tucked in peacefully"
                   width={1536}
                   height={1024}
                   className="h-[260px] w-full object-cover sm:h-[320px]"
