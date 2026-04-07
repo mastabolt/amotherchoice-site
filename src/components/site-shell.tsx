@@ -14,7 +14,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-40 border-b border-white/60 bg-[rgba(251,248,244,0.86)] backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
           <Link href="/" className="flex flex-col">
-            <span className="text-xs font-semibold uppercase tracking-[0.28em] text-rose-500">
+            <span className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-mauve)]">
               A Mother Choice
             </span>
             <span className="text-lg font-semibold text-slate-900">
@@ -26,14 +26,14 @@ export function SiteShell({ children }: { children: ReactNode }) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-slate-700 transition hover:text-rose-500"
+                className="text-sm font-medium text-slate-700 transition hover:text-[var(--color-mauve-dark)]"
               >
                 {item.label}
               </Link>
             ))}
             <Link
               href="/classes"
-              className="rounded-full bg-rose-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-rose-600"
+              className="rounded-full bg-[var(--color-mauve)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--color-mauve-dark)]"
             >
               View Classes
             </Link>
@@ -44,7 +44,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <footer className="border-t border-rose-100 bg-white">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-[1.5fr_1fr_1fr] lg:px-8">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-rose-500">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-mauve)]">
               A Mother Choice
             </p>
             <h2 className="mt-3 text-2xl font-semibold text-slate-900">
@@ -59,13 +59,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <ul className="mt-4 space-y-3 text-sm text-slate-600">
               {navigation.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="transition hover:text-rose-500">
+                  <Link href={item.href} className="transition hover:text-[var(--color-mauve-dark)]">
                     {item.label}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/thank-you" className="transition hover:text-rose-500">
+                <Link href="/thank-you" className="transition hover:text-[var(--color-mauve-dark)]">
                   Thank You
                 </Link>
               </li>
