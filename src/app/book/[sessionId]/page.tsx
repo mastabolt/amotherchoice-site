@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getClassSessionById } from "@/data/classSessions";
 import { Container, PrimaryButton, SecondaryButton } from "@/components/ui";
+import { getClassSessionById } from "@/lib/class-sessions";
+import { formatCurrencyFromCents, formatDateRange, formatSessionStatus } from "@/lib/formatters";
 
 export default async function BookPage({
   params,
@@ -9,7 +10,7 @@ export default async function BookPage({
   params: Promise<{ sessionId: string }>;
 }) {
   const { sessionId } = await params;
-  const session = getClassSessionById(sessionId);
+  const session = await getClassSessionById(sessionId);
 
   if (!session) {
     notFound();
@@ -27,7 +28,7 @@ export default async function BookPage({
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-[1.5rem] bg-[var(--color-blush)] p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-500">Dates</p>
-                <p className="mt-2 text-base font-medium text-slate-900">{session.startDate} - {session.endDate}</p>
+                <p className="mt-2 text-base font-medium text-slate-900">{formatDateRange(session.startDate, session.endDate)}</p>
               </div>
               <div className="rounded-[1.5rem] bg-[var(--color-sand)] p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-500">Duration</p>
@@ -35,7 +36,7 @@ export default async function BookPage({
               </div>
               <div className="rounded-[1.5rem] bg-[var(--color-blush)] p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-500">Price</p>
-                <p className="mt-2 text-base font-medium text-slate-900">${session.price}</p>
+                <p className="mt-2 text-base font-medium text-slate-900">{formatCurrencyFromCents(session.price)}</p>
               </div>
               <div className="rounded-[1.5rem] bg-[var(--color-sand)] p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-500">Capacity</p>
@@ -45,10 +46,10 @@ export default async function BookPage({
           </div>
 
           <div className="rounded-[2rem] bg-rose-100 p-8 text-slate-900 shadow-[0_30px_80px_rgba(15,23,42,0.08)] sm:p-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">Phase 1 Notice</p>
-            <h2 className="mt-4 text-3xl font-semibold">Registration and payment coming in Phase 2</h2>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">Enrollment Status</p>
+            <h2 className="mt-4 text-3xl font-semibold">{formatSessionStatus(session.status)} for booking setup</h2>
             <p className="mt-5 text-base leading-8 text-slate-700">
-              This page is intentionally structured around a selected class session so the next phase can connect real registrations, Stripe Checkout, and capacity tracking.
+              This page is now connected to real class session data from the database and is ready for registration and Stripe integration in Phase 3.
             </p>
             <div className="mt-8 flex flex-col gap-4">
               <PrimaryButton href="/classes">Back to Classes</PrimaryButton>

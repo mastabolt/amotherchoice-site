@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { classSessions } from "@/data/classSessions";
 import { Container, SectionIntro } from "@/components/ui";
+import { getClassSessions } from "@/lib/class-sessions";
+import { formatCurrencyFromCents, formatDateRange, formatSessionStatus } from "@/lib/formatters";
 
-export default function ClassesPage() {
+export default async function ClassesPage() {
+  const classSessions = await getClassSessions();
   return (
     <section className="py-20 sm:py-24">
       <Container>
@@ -49,7 +51,7 @@ export default function ClassesPage() {
             >
               <div className="mt-0 flex items-center justify-between gap-4">
                 <span className="rounded-full bg-rose-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-rose-500">
-                  {session.status}
+                  {formatSessionStatus(session.status)}
                 </span>
                 <span className="text-sm text-slate-500">{session.durationDays} days</span>
               </div>
@@ -58,7 +60,7 @@ export default function ClassesPage() {
               <dl className="mt-6 space-y-3 text-sm leading-6 text-slate-500">
                 <div className="flex justify-between gap-4">
                   <dt>Dates</dt>
-                  <dd className="text-right text-slate-700">{session.startDate} - {session.endDate}</dd>
+                  <dd className="text-right text-slate-700">{formatDateRange(session.startDate, session.endDate)}</dd>
                 </div>
                 <div className="flex justify-between gap-4">
                   <dt>Duration</dt>
@@ -66,7 +68,7 @@ export default function ClassesPage() {
                 </div>
                 <div className="flex justify-between gap-4">
                   <dt>Price</dt>
-                  <dd className="text-slate-700">${session.price}</dd>
+                  <dd className="text-slate-700">{formatCurrencyFromCents(session.price)}</dd>
                 </div>
                 <div className="flex justify-between gap-4">
                   <dt>Capacity</dt>
@@ -74,7 +76,7 @@ export default function ClassesPage() {
                 </div>
                 <div className="flex justify-between gap-4">
                   <dt>Status</dt>
-                  <dd className="text-slate-700">{session.status}</dd>
+                  <dd className="text-slate-700">{formatSessionStatus(session.status)}</dd>
                 </div>
               </dl>
               <Link

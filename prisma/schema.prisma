@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ClassSessionStatus {
+  open
+  closed
+}
+
+enum PaymentStatus {
+  pending
+  paid
+  failed
+}
+
+enum RegistrationStatus {
+  active
+  cancelled
+}
+
+model ClassSession {
+  id           String             @id @default(uuid()) @db.Uuid
+  title        String
+  description  String
+  startDate    DateTime
+  endDate      DateTime
+  durationDays Int
+  price        Int
+  capacity     Int
+  status       ClassSessionStatus @default(open)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+
+  registrations Registration[]
+}
+
+model Registration {
+  id                      String             @id @default(uuid()) @db.Uuid
+  classSessionId          String             @db.Uuid
+  attendeeName            String
+  email                   String
+  phone                   String
+  paymentStatus           PaymentStatus      @default(pending)
+  registrationStatus      RegistrationStatus @default(active)
+  stripeCheckoutSessionId String?
+  stripePaymentIntentId   String?
+  createdAt               DateTime           @default(now())
+
+  classSession ClassSession @relation(fields: [classSessionId], references: [id], onDelete: Cascade)
+
+  @@index([classSessionId])
+  @@index([email])
+}
