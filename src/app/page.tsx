@@ -8,7 +8,7 @@ const featuredSessions = classSessions.slice(0, 2);
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden py-20 sm:py-24">
+      <section className="relative overflow-hidden py-16 sm:py-20">
         <Container>
           <div className="grid items-start gap-14 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
@@ -18,20 +18,20 @@ export default function Home() {
                   alt="A warm moment between a mother and her baby"
                   width={1536}
                   height={1024}
-                  className="h-[210px] w-full rounded-[1.5rem] object-cover sm:h-[250px]"
+                  className="h-[160px] w-full rounded-[1.5rem] object-cover sm:h-[190px]"
                   priority
                 />
               </div>
-              <p className="mt-8 text-sm font-semibold uppercase tracking-[0.28em] text-rose-500">
+              <p className="mt-6 text-sm font-semibold uppercase tracking-[0.28em] text-rose-500">
                 For Families and Professionals
               </p>
-              <h1 className="mt-6 max-w-3xl font-serif text-5xl font-semibold leading-tight text-slate-900 sm:text-6xl">
+              <h1 className="mt-4 max-w-3xl font-serif text-5xl font-semibold leading-tight text-slate-900 sm:text-6xl">
                 Education, training, and perinatal support with a clear path forward.
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
                 A Mother Choice is a modern multi-page platform for certification-focused trainings, family education, lactation support, and postpartum guidance.
               </p>
-              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <PrimaryButton href="/classes">Explore Classes</PrimaryButton>
                 <SecondaryButton href="/about">Learn About Us</SecondaryButton>
               </div>
