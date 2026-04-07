@@ -47,22 +47,7 @@ export default function ClassesPage() {
               key={session.id}
               className="flex h-full flex-col rounded-[1.85rem] border border-white/90 bg-white p-7 shadow-[0_25px_70px_rgba(15,23,42,0.06)]"
             >
-              <div className="overflow-hidden rounded-[1.5rem]">
-                <Image
-                  src={
-                    index === 0
-                      ? "/classes1.jpg"
-                      : index === 1
-                        ? "/classes3.jpeg"
-                        : "/classes2.jpg"
-                  }
-                  alt={session.title}
-                  width={2560}
-                  height={1920}
-                  className="h-[190px] w-full object-cover"
-                />
-              </div>
-              <div className="mt-5 flex items-center justify-between gap-4">
+              <div className="mt-0 flex items-center justify-between gap-4">
                 <span className="rounded-full bg-rose-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-rose-500">
                   {session.status}
                 </span>
