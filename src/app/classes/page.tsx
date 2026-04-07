@@ -10,20 +10,20 @@ export default function ClassesPage() {
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/80 p-3 shadow-[0_20px_50px_rgba(15,23,42,0.06)]">
             <Image
-              src="/classes-photo-group-certificates.png"
+              src="/classes1.jpg"
               alt="A Mother Choice class participants holding certificates together"
-              width={2048}
-              height={1152}
+              width={2560}
+              height={1440}
               className="h-[250px] w-full rounded-[1.5rem] object-cover object-center sm:h-[340px]"
               priority
             />
           </div>
           <div className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/80 p-3 shadow-[0_20px_50px_rgba(15,23,42,0.06)]">
             <Image
-              src="/classes-photo-training-room.png"
+              src="/classes2.jpg"
               alt="Training session in progress"
-              width={2048}
-              height={1152}
+              width={2560}
+              height={1920}
               className="h-[250px] w-full rounded-[1.5rem] object-cover sm:h-[340px]"
               priority
             />
@@ -37,7 +37,7 @@ export default function ClassesPage() {
             description="Browse real class experiences, professional trainings, and support-centered sessions designed for both professionals and families."
           />
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-500">
-            Using your provided classroom photo here as the lead visual so the page feels more grounded, warm, and real.
+            Featuring your uploaded classroom and graduation photos so the page feels grounded, warm, and real.
           </p>
         </div>
 
@@ -51,14 +51,14 @@ export default function ClassesPage() {
                 <Image
                   src={
                     index === 0
-                      ? "/classes-photo-group-standing.png"
+                      ? "/classes3.jpeg"
                       : index === 1
-                        ? "/classes-photo-training-room.png"
-                        : "/classes-photo-group-certificates.png"
+                        ? "/classes2.jpg"
+                        : "/classes1.jpg"
                   }
                   alt={session.title}
-                  width={2048}
-                  height={1152}
+                  width={2560}
+                  height={1920}
                   className="h-[190px] w-full object-cover"
                 />
               </div>
@@ -112,10 +112,10 @@ export default function ClassesPage() {
           </div>
           <div className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/80 p-3 shadow-[0_20px_50px_rgba(15,23,42,0.06)]">
             <Image
-              src="/classes-photo-group-standing.png"
+              src="/classes3.jpeg"
               alt="Training participants standing together"
-              width={2048}
-              height={1152}
+              width={2560}
+              height={1920}
               className="h-[250px] w-full rounded-[1.5rem] object-cover sm:h-[320px]"
             />
           </div>
