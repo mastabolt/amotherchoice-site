@@ -155,7 +155,7 @@ export default function Home() {
                 </dl>
                 <Link
                   href={`/book/${session.id}`}
-                  className="mt-7 inline-flex items-center justify-center rounded-full bg-rose-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-rose-600"
+                  className="mt-7 inline-flex items-center justify-center rounded-full bg-[var(--color-mauve)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-mauve-dark)]"
                 >
                   Book This Class
                 </Link>
