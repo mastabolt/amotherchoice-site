@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -13,13 +14,15 @@ export function SiteShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-[var(--color-cream)] text-slate-900">
       <header className="sticky top-0 z-40 border-b border-white/60 bg-[rgba(251,248,244,0.86)] backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-          <Link href="/" className="flex flex-col">
-            <span className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-mauve)]">
-              A Mother Choice
-            </span>
-            <span className="text-lg font-semibold text-slate-900">
-              Perinatal Education + Support
-            </span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/amotherchoice-logo.png"
+              alt="A Mother Choice"
+              width={615}
+              height={177}
+              className="h-12 w-auto sm:h-14"
+              priority
+            />
           </Link>
           <nav className="hidden items-center gap-7 md:flex">
             {navigation.map((item) => (
