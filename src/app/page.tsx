@@ -83,7 +83,7 @@ export default function Home() {
               <p className="mt-4 text-base leading-7 text-slate-600">
                 Visit the About page for the deeper story behind A Mother Choice and how we serve both audiences with care.
               </p>
-              <Link href="/about" className="mt-6 inline-flex text-sm font-semibold text-rose-500 transition hover:text-slate-900">
+              <Link href="/about" className="mt-6 inline-flex text-sm font-semibold text-[var(--color-mauve)] transition hover:text-[var(--color-mauve-dark)]">
                 Go to About
               </Link>
             </div>
@@ -93,7 +93,7 @@ export default function Home() {
               <p className="mt-4 text-base leading-7 text-slate-600">
                 The Classes page is the main enrollment hub, with session details, pricing, capacity, and booking paths.
               </p>
-              <Link href="/classes" className="mt-6 inline-flex text-sm font-semibold text-rose-500 transition hover:text-slate-900">
+              <Link href="/classes" className="mt-6 inline-flex text-sm font-semibold text-[var(--color-mauve)] transition hover:text-[var(--color-mauve-dark)]">
                 Go to Classes
               </Link>
             </div>
@@ -103,7 +103,7 @@ export default function Home() {
               <p className="mt-4 text-base leading-7 text-slate-600">
                 Reach out through the Contact page for support, class questions, or help choosing the best next step.
               </p>
-              <Link href="/contact" className="mt-6 inline-flex text-sm font-semibold text-rose-500 transition hover:text-slate-900">
+              <Link href="/contact" className="mt-6 inline-flex text-sm font-semibold text-[var(--color-mauve)] transition hover:text-[var(--color-mauve-dark)]">
                 Go to Contact
               </Link>
             </div>
