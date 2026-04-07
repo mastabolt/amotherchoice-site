@@ -10,9 +10,23 @@ export default function Home() {
     <>
       <section className="relative overflow-hidden py-20 sm:py-24">
         <Container>
-          <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="grid items-start gap-14 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-rose-500">
+              <div className="grid gap-4 sm:grid-cols-3">
+                <div className="rounded-[1.5rem] border border-white/80 bg-white/85 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.05)]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-mauve)]">Professionals</p>
+                  <p className="mt-3 text-sm leading-6 text-slate-700">Certification-focused childbirth and lactation education.</p>
+                </div>
+                <div className="rounded-[1.5rem] border border-white/80 bg-white/85 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.05)]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-mauve)]">Families</p>
+                  <p className="mt-3 text-sm leading-6 text-slate-700">Lactation support, postpartum guidance, and nurturing care.</p>
+                </div>
+                <div className="rounded-[1.5rem] border border-white/80 bg-white/85 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.05)]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-mauve)]">Format</p>
+                  <p className="mt-3 text-sm leading-6 text-slate-700">Structured classes, clear pathways, and real next steps.</p>
+                </div>
+              </div>
+              <p className="mt-8 text-sm font-semibold uppercase tracking-[0.28em] text-rose-500">
                 For Families and Professionals
               </p>
               <h1 className="mt-6 max-w-3xl font-serif text-5xl font-semibold leading-tight text-slate-900 sm:text-6xl">
