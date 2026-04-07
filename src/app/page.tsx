@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { HeroCollage } from "@/components/hero-collage";
 import { classSessions } from "@/data/classSessions";
 import { Container, PrimaryButton, SecondaryButton } from "@/components/ui";
 
@@ -13,14 +14,7 @@ export default function Home() {
           <div className="grid items-start gap-14 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <div className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/80 p-3 shadow-[0_20px_50px_rgba(15,23,42,0.06)]">
-                <Image
-                  src="/secondary-hero-warmth.png"
-                  alt="A warm moment between a mother and her baby"
-                  width={1536}
-                  height={1024}
-                  className="h-[160px] w-full rounded-[1.5rem] object-cover sm:h-[190px]"
-                  priority
-                />
+                <HeroCollage />
               </div>
               <p className="mt-6 text-sm font-semibold uppercase tracking-[0.28em] text-rose-500">
                 For Families and Professionals
