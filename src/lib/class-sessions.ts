@@ -19,21 +19,32 @@ function mapRow(row: Record<string, unknown>): ClassSessionRecord {
     id: String(row.id),
     title: String(row.title),
     description: String(row.description),
-    startDate: new Date(String(row.startDate)),
-    endDate: new Date(String(row.endDate)),
-    durationDays: Number(row.durationDays),
+    startDate: new Date(String(row.startDate ?? row.startdate)),
+    endDate: new Date(String(row.endDate ?? row.enddate)),
+    durationDays: Number(row.durationDays ?? row.durationdays),
     price: Number(row.price),
     capacity: Number(row.capacity),
     status: String(row.status),
-    createdAt: new Date(String(row.createdAt)),
-    updatedAt: new Date(String(row.updatedAt)),
+    createdAt: new Date(String(row.createdAt ?? row.createdat)),
+    updatedAt: new Date(String(row.updatedAt ?? row.updatedat)),
   };
 }
 
 export async function getClassSessions(): Promise<ClassSessionRecord[]> {
   const db = getDb();
   const result = await db.query(`
-    SELECT id, title, description, "startDate", "endDate", "durationDays", price, capacity, status, "createdAt", "updatedAt"
+    SELECT
+      id,
+      title,
+      description,
+      "startDate" AS "startDate",
+      "endDate" AS "endDate",
+      "durationDays" AS "durationDays",
+      price,
+      capacity,
+      status,
+      "createdAt" AS "createdAt",
+      "updatedAt" AS "updatedAt"
     FROM "ClassSession"
     ORDER BY "startDate" ASC
   `);
@@ -45,7 +56,18 @@ export async function getClassSessionById(id: string): Promise<ClassSessionRecor
   const db = getDb();
   const result = await db.query(
     `
-      SELECT id, title, description, "startDate", "endDate", "durationDays", price, capacity, status, "createdAt", "updatedAt"
+      SELECT
+        id,
+        title,
+        description,
+        "startDate" AS "startDate",
+        "endDate" AS "endDate",
+        "durationDays" AS "durationDays",
+        price,
+        capacity,
+        status,
+        "createdAt" AS "createdAt",
+        "updatedAt" AS "updatedAt"
       FROM "ClassSession"
       WHERE id = $1
       LIMIT 1
