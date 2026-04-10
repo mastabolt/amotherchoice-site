@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+
+export const dynamic = "force-dynamic";
 import { Container, SectionIntro } from "@/components/ui";
 import { getClassSessions } from "@/lib/class-sessions";
 import { formatCurrencyFromCents, formatDateRange, formatSessionStatus } from "@/lib/formatters";

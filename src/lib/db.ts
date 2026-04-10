@@ -4,21 +4,25 @@ const globalForDb = globalThis as unknown as {
   pgPool?: Pool;
 };
 
-function createPool() {
+export function getDb() {
+  if (globalForDb.pgPool) {
+    return globalForDb.pgPool;
+  }
+
   const connectionString = process.env.DATABASE_URL;
 
   if (!connectionString) {
     throw new Error("DATABASE_URL is required");
   }
 
-  return new Pool({
+  const pool = new Pool({
     connectionString,
     ssl: { rejectUnauthorized: false },
   });
-}
 
-export const db = globalForDb.pgPool ?? createPool();
+  if (process.env.NODE_ENV !== "production") {
+    globalForDb.pgPool = pool;
+  }
 
-if (process.env.NODE_ENV !== "production") {
-  globalForDb.pgPool = db;
+  return pool;
 }

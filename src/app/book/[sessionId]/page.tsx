@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
+export const dynamic = "force-dynamic";
 import { Container, PrimaryButton, SecondaryButton } from "@/components/ui";
 import { getClassSessionById } from "@/lib/class-sessions";
 import { formatCurrencyFromCents, formatDateRange, formatSessionStatus } from "@/lib/formatters";

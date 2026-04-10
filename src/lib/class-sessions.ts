@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 
 export type ClassSessionRecord = {
   id: string;
@@ -31,6 +31,7 @@ function mapRow(row: Record<string, unknown>): ClassSessionRecord {
 }
 
 export async function getClassSessions(): Promise<ClassSessionRecord[]> {
+  const db = getDb();
   const result = await db.query(`
     SELECT id, title, description, "startDate", "endDate", "durationDays", price, capacity, status, "createdAt", "updatedAt"
     FROM "ClassSession"
@@ -41,6 +42,7 @@ export async function getClassSessions(): Promise<ClassSessionRecord[]> {
 }
 
 export async function getClassSessionById(id: string): Promise<ClassSessionRecord | null> {
+  const db = getDb();
   const result = await db.query(
     `
       SELECT id, title, description, "startDate", "endDate", "durationDays", price, capacity, status, "createdAt", "updatedAt"
