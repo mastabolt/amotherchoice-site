@@ -8,7 +8,11 @@ export async function GET() {
     const sessions = await getClassSessions();
     return NextResponse.json(sessions);
   } catch (error) {
-    console.error("Failed to load class sessions", error);
+    console.error("Failed to load class sessions", {
+      message: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+      error,
+    });
     return NextResponse.json({ error: "Failed to load class sessions" }, { status: 500 });
   }
 }

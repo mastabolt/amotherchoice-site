@@ -17,7 +17,11 @@ export async function GET(
 
     return NextResponse.json(session);
   } catch (error) {
-    console.error("Failed to load class session", error);
+    console.error("Failed to load class session", {
+      message: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+      error,
+    });
     return NextResponse.json({ error: "Failed to load class session" }, { status: 500 });
   }
 }

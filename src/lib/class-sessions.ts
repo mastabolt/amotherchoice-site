@@ -14,19 +14,27 @@ export type ClassSessionRecord = {
   updatedAt: Date;
 };
 
+function mapDate(value: unknown) {
+  if (value instanceof Date) {
+    return value;
+  }
+
+  return new Date(String(value));
+}
+
 function mapRow(row: Record<string, unknown>): ClassSessionRecord {
   return {
     id: String(row.id),
     title: String(row.title),
     description: String(row.description),
-    startDate: new Date(String(row.startDate ?? row.startdate)),
-    endDate: new Date(String(row.endDate ?? row.enddate)),
+    startDate: mapDate(row.startDate ?? row.startdate),
+    endDate: mapDate(row.endDate ?? row.enddate),
     durationDays: Number(row.durationDays ?? row.durationdays),
     price: Number(row.price),
     capacity: Number(row.capacity),
     status: String(row.status),
-    createdAt: new Date(String(row.createdAt ?? row.createdat)),
-    updatedAt: new Date(String(row.updatedAt ?? row.updatedat)),
+    createdAt: mapDate(row.createdAt ?? row.createdat),
+    updatedAt: mapDate(row.updatedAt ?? row.updatedat),
   };
 }
 
