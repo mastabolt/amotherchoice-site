@@ -44,14 +44,18 @@ model Registration {
   attendeeName            String
   email                   String
   phone                   String
+  notes                   String?
   paymentStatus           PaymentStatus      @default(pending)
   registrationStatus      RegistrationStatus @default(active)
   stripeCheckoutSessionId String?
   stripePaymentIntentId   String?
   createdAt               DateTime           @default(now())
+  updatedAt               DateTime           @updatedAt
 
   classSession ClassSession @relation(fields: [classSessionId], references: [id], onDelete: Cascade)
 
   @@index([classSessionId])
   @@index([email])
+  @@index([stripeCheckoutSessionId])
+  @@index([stripePaymentIntentId])
 }
