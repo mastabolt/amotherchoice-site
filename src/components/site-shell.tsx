@@ -24,23 +24,31 @@ export function SiteShell({ children }: { children: ReactNode }) {
               priority
             />
           </Link>
-          <nav className="hidden items-center gap-7 md:flex">
-            {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm font-medium text-slate-700 transition hover:text-[var(--color-mauve-dark)]"
-              >
-                {item.label}
-              </Link>
-            ))}
+          <div className="flex items-center gap-3 md:gap-5">
             <Link
-              href="/classes"
-              className="rounded-full bg-[var(--color-mauve)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--color-mauve-dark)]"
+              href="/admin/login"
+              className="text-sm font-semibold text-slate-700 transition hover:text-[var(--color-mauve-dark)]"
             >
-              View Classes
+              Login
             </Link>
-          </nav>
+            <nav className="hidden items-center gap-7 md:flex">
+              {navigation.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm font-medium text-slate-700 transition hover:text-[var(--color-mauve-dark)]"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Link
+                href="/classes"
+                className="rounded-full bg-[var(--color-mauve)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--color-mauve-dark)]"
+              >
+                View Classes
+              </Link>
+            </nav>
+          </div>
         </div>
       </header>
       <main>{children}</main>
