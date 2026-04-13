@@ -115,7 +115,7 @@ export async function POST(request: NextRequest) {
     await attachCheckoutSessionToRegistration(registration.id, checkoutSession.id);
 
     if (!checkoutSession.url) {
-      return NextResponse.json({ error: "Stripe Checkout URL was not created." }, { status: 500 });
+      return NextResponse.json({ error: "Checkout URL was not created." }, { status: 500 });
     }
 
     return NextResponse.json({ checkoutUrl: checkoutSession.url, registrationId: registration.id });
@@ -126,6 +126,6 @@ export async function POST(request: NextRequest) {
       error,
     });
 
-    return NextResponse.json({ error: "Failed to start Stripe Checkout." }, { status: 500 });
+    return NextResponse.json({ error: "Failed to start Checkout." }, { status: 500 });
   }
 }

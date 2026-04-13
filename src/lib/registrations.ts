@@ -142,6 +142,33 @@ export async function markRegistrationPaymentFailed(input: {
   );
 }
 
+export async function getRegistrationsByClassSessionId(classSessionId: string) {
+  const db = getDb();
+  const result = await db.query(
+    `
+      SELECT
+        id,
+        "classSessionId" AS "classSessionId",
+        "attendeeName" AS "attendeeName",
+        email,
+        phone,
+        notes,
+        "paymentStatus" AS "paymentStatus",
+        "registrationStatus" AS "registrationStatus",
+        "stripeCheckoutSessionId" AS "stripeCheckoutSessionId",
+        "stripePaymentIntentId" AS "stripePaymentIntentId",
+        "createdAt" AS "createdAt",
+        "updatedAt" AS "updatedAt"
+      FROM "Registration"
+      WHERE "classSessionId" = $1
+      ORDER BY "createdAt" DESC
+    `,
+    [classSessionId],
+  );
+
+  return result.rows.map(mapRegistrationRow);
+}
+
 export async function getRegistrationById(id: string) {
   const db = getDb();
   const result = await db.query(

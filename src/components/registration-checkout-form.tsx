@@ -64,7 +64,7 @@ export function RegistrationCheckoutForm({
       <p className="text-sm font-semibold uppercase tracking-[0.24em] text-rose-500">Registration</p>
       <h2 className="mt-4 text-3xl font-semibold">Reserve your spot in {sessionTitle}</h2>
       <p className="mt-5 text-base leading-8 text-slate-700">
-        Complete this short form and you&apos;ll be taken to Stripe Checkout to finish payment securely.
+        Complete this short form and you&apos;ll be taken to Checkout to finish payment securely.
       </p>
 
       {cancelled ? (
@@ -133,7 +133,7 @@ export function RegistrationCheckoutForm({
             disabled={isSubmitting}
             className="inline-flex w-full items-center justify-center rounded-full bg-[var(--color-mauve)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-mauve-dark)] disabled:cursor-not-allowed disabled:opacity-70"
           >
-            {isSubmitting ? "Redirecting to Stripe..." : "Continue to Stripe Checkout"}
+            {isSubmitting ? "Redirecting to Checkout..." : "Continue to Checkout"}
           </button>
 
           <p className="text-sm leading-7 text-slate-600">

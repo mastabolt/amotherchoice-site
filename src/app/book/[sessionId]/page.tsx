@@ -54,7 +54,7 @@ export default async function BookPage({
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-500">Status</p>
               <p className="mt-2 text-base font-medium text-slate-900">{formatSessionStatus(session.status)}</p>
               <p className="mt-3 text-sm leading-7 text-slate-600">
-                Registrations create a pending record first, then redirect to Stripe Checkout so payment stays tied to this class session.
+                Registrations create a pending record first, then redirect to Checkout so payment stays tied to this class session.
               </p>
             </div>
 
