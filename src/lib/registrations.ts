@@ -1,3 +1,4 @@
+import { randomUUID } from "crypto";
 import { getDb } from "@/lib/db";
 
 export type RegistrationRecord = {
@@ -54,9 +55,11 @@ export async function createPendingRegistration(input: {
   notes?: string | null;
 }) {
   const db = getDb();
+  const registrationId = randomUUID();
   const result = await db.query(
     `
       INSERT INTO "Registration" (
+        id,
         "classSessionId",
         "attendeeName",
         email,
@@ -67,7 +70,7 @@ export async function createPendingRegistration(input: {
         "createdAt",
         "updatedAt"
       )
-      VALUES ($1, $2, $3, $4, $5, 'pending', 'active', NOW(), NOW())
+      VALUES ($1, $2, $3, $4, $5, $6, 'pending', 'active', NOW(), NOW())
       RETURNING
         id,
         "classSessionId" AS "classSessionId",
@@ -82,7 +85,7 @@ export async function createPendingRegistration(input: {
         "createdAt" AS "createdAt",
         "updatedAt" AS "updatedAt"
     `,
-    [input.classSessionId, input.attendeeName, input.email, input.phone, input.notes ?? null],
+    [registrationId, input.classSessionId, input.attendeeName, input.email, input.phone, input.notes ?? null],
   );
 
   return mapRegistrationRow(result.rows[0]);
