@@ -16,7 +16,9 @@ export default async function AdminProtectedLayout({ children }: { children: Rea
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-rose-500">A Mother Choice Admin</p>
               <h1 className="mt-2 text-2xl font-semibold text-slate-900">Internal class management</h1>
-              <p className="mt-2 text-sm text-slate-500">Signed in as {session.email}</p>
+              <p className="mt-2 text-sm text-slate-500">
+                Signed in as {session.email} · {session.role === "super_admin" ? "Super Admin" : "Administrator"}
+              </p>
             </div>
 
             <div className="flex flex-wrap gap-3">
@@ -32,6 +34,14 @@ export default async function AdminProtectedLayout({ children }: { children: Rea
               >
                 New Class
               </Link>
+              {session.role === "super_admin" ? (
+                <Link
+                  href="/admin/administrators"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-[var(--color-mauve)] hover:text-[var(--color-mauve-dark)]"
+                >
+                  Administrators
+                </Link>
+              ) : null}
               <form action="/admin/logout" method="post">
                 <button
                   type="submit"

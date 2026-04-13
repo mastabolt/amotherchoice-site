@@ -22,6 +22,11 @@ enum RegistrationStatus {
   cancelled
 }
 
+enum AdminRole {
+  super_admin
+  admin
+}
+
 model ClassSession {
   id           String             @id @default(uuid()) @db.Uuid
   title        String
@@ -58,4 +63,21 @@ model Registration {
   @@index([email])
   @@index([stripeCheckoutSessionId])
   @@index([stripePaymentIntentId])
+}
+
+model AdminUser {
+  id               String    @id @default(uuid()) @db.Uuid
+  email            String    @unique
+  passwordHash     String
+  role             AdminRole
+  isActive         Boolean   @default(true)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  createdByAdminId String?   @db.Uuid
+
+  createdByAdmin AdminUser?  @relation("AdminUserCreatedBy", fields: [createdByAdminId], references: [id], onDelete: SetNull)
+  createdAdmins  AdminUser[] @relation("AdminUserCreatedBy")
+
+  @@index([role])
+  @@index([isActive])
 }

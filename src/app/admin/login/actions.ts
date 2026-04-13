@@ -12,12 +12,12 @@ export async function loginAdminAction(_: LoginFormState, formData: FormData): P
   const password = String(formData.get("password") ?? "");
   const nextPath = String(formData.get("next") ?? "/admin/classes");
 
-  const isValid = await authenticateAdmin(email, password);
+  const adminUser = await authenticateAdmin(email, password);
 
-  if (!isValid) {
+  if (!adminUser) {
     return { error: "Invalid admin credentials." };
   }
 
-  await setAdminSession(email);
+  await setAdminSession(adminUser);
   redirect(nextPath.startsWith("/admin") ? nextPath : "/admin/classes");
 }

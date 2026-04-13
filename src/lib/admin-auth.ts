@@ -3,41 +3,33 @@ import "server-only";
 import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { getAdminUserByEmail, getAdminUserById } from "@/lib/admin-users";
 import { ADMIN_SESSION_COOKIE, createAdminSessionToken, verifyAdminSessionToken } from "@/lib/admin-session";
-
-function getAdminEmail() {
-  const email = process.env.ADMIN_EMAIL;
-
-  if (!email) {
-    throw new Error("ADMIN_EMAIL is required");
-  }
-
-  return email.trim().toLowerCase();
-}
-
-function getAdminPasswordHash() {
-  const passwordHash = process.env.ADMIN_PASSWORD_HASH;
-
-  if (!passwordHash) {
-    throw new Error("ADMIN_PASSWORD_HASH is required");
-  }
-
-  return passwordHash;
-}
 
 export async function authenticateAdmin(email: string, password: string) {
   const normalizedEmail = email.trim().toLowerCase();
+  const adminUser = await getAdminUserByEmail(normalizedEmail);
 
-  if (normalizedEmail !== getAdminEmail()) {
-    return false;
+  if (!adminUser || !adminUser.isActive) {
+    return null;
   }
 
-  return bcrypt.compare(password, getAdminPasswordHash());
+  const isValid = await bcrypt.compare(password, adminUser.passwordHash);
+
+  if (!isValid) {
+    return null;
+  }
+
+  return adminUser;
 }
 
-export async function setAdminSession(email: string) {
+export async function setAdminSession(adminUser: { id: string; email: string; role: "super_admin" | "admin" }) {
   const cookieStore = await cookies();
-  const token = await createAdminSessionToken(email.trim().toLowerCase());
+  const token = await createAdminSessionToken({
+    adminUserId: adminUser.id,
+    email: adminUser.email,
+    role: adminUser.role,
+  });
 
   cookieStore.set(ADMIN_SESSION_COOKIE, token, {
     httpOnly: true,
@@ -61,7 +53,23 @@ export async function getAdminSession() {
     return null;
   }
 
-  return verifyAdminSessionToken(token);
+  const payload = await verifyAdminSessionToken(token);
+
+  if (!payload) {
+    return null;
+  }
+
+  const adminUser = await getAdminUserById(payload.adminUserId);
+
+  if (!adminUser || !adminUser.isActive) {
+    return null;
+  }
+
+  return {
+    adminUserId: adminUser.id,
+    email: adminUser.email,
+    role: adminUser.role,
+  };
 }
 
 export async function requireAdminSession() {
@@ -69,6 +77,16 @@ export async function requireAdminSession() {
 
   if (!session) {
     redirect("/admin/login");
+  }
+
+  return session;
+}
+
+export async function requireSuperAdmin() {
+  const session = await requireAdminSession();
+
+  if (session.role !== "super_admin") {
+    redirect("/admin/classes");
   }
 
   return session;

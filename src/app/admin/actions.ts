@@ -1,5 +1,6 @@
 "use server";
 
+import bcrypt from "bcryptjs";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import {
@@ -9,7 +10,8 @@ import {
   updateClassSession,
   updateClassSessionStatus,
 } from "@/lib/class-sessions";
-import { clearAdminSession, requireAdminSession } from "@/lib/admin-auth";
+import { createAdministrator, updateAdministrator } from "@/lib/admin-users";
+import { clearAdminSession, requireAdminSession, requireSuperAdmin } from "@/lib/admin-auth";
 
 function parseRequiredString(formData: FormData, key: string) {
   const value = formData.get(key);
@@ -60,6 +62,10 @@ function parseStatus(formData: FormData): ClassSessionStatus {
   }
 
   return status;
+}
+
+function parseBoolean(formData: FormData, key: string) {
+  return formData.get(key) === "true";
 }
 
 function parseClassSessionInput(formData: FormData) {
@@ -124,4 +130,37 @@ export async function toggleClassSessionStatusAction(formData: FormData) {
   revalidatePath(`/admin/classes/${classSessionId}/registrations`);
   revalidatePath("/classes");
   revalidatePath(`/book/${classSessionId}`);
+}
+
+export async function createAdministratorAction(formData: FormData) {
+  const session = await requireSuperAdmin();
+  const email = parseRequiredString(formData, "email").toLowerCase();
+  const password = parseRequiredString(formData, "password");
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  await createAdministrator({
+    email,
+    passwordHash,
+    createdByAdminId: session.adminUserId,
+  });
+
+  revalidatePath("/admin/administrators");
+  redirect("/admin/administrators?created=1");
+}
+
+export async function updateAdministratorAction(adminUserId: string, formData: FormData) {
+  await requireSuperAdmin();
+  const email = parseRequiredString(formData, "email").toLowerCase();
+  const password = String(formData.get("password") ?? "").trim();
+  const isActive = parseBoolean(formData, "isActive");
+
+  await updateAdministrator(adminUserId, {
+    email,
+    passwordHash: password ? await bcrypt.hash(password, 10) : null,
+    isActive,
+  });
+
+  revalidatePath("/admin/administrators");
+  revalidatePath(`/admin/administrators/${adminUserId}/edit`);
+  redirect(`/admin/administrators/${adminUserId}/edit?updated=1`);
 }
