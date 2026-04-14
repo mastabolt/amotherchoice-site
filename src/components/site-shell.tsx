@@ -27,9 +27,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <div className="flex items-center gap-3 md:gap-5">
             <Link
               href="/admin/login"
-              className="text-sm font-semibold text-slate-700 transition hover:text-[var(--color-mauve-dark)]"
+              aria-label="Admin login"
+              title="Admin login"
+              className="inline-flex size-10 items-center justify-center rounded-full border border-rose-100 bg-white text-slate-700 transition hover:border-[var(--color-mauve)] hover:text-[var(--color-mauve-dark)] md:hidden"
             >
-              Login
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="size-5" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6.75a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 19.125a7.5 7.5 0 0 1 15 0" />
+              </svg>
             </Link>
             <nav className="hidden items-center gap-7 md:flex">
               {navigation.map((item) => (
@@ -41,6 +45,16 @@ export function SiteShell({ children }: { children: ReactNode }) {
                   {item.label}
                 </Link>
               ))}
+              <Link
+                href="/admin/login"
+                aria-label="Admin login"
+                title="Admin login"
+                className="inline-flex size-10 items-center justify-center rounded-full border border-rose-100 bg-white text-slate-700 transition hover:border-[var(--color-mauve)] hover:text-[var(--color-mauve-dark)]"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="size-5" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6.75a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 19.125a7.5 7.5 0 0 1 15 0" />
+                </svg>
+              </Link>
               <Link
                 href="/classes"
                 className="rounded-full bg-[var(--color-mauve)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--color-mauve-dark)]"
