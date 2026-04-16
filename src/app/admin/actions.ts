@@ -83,7 +83,7 @@ function parseClassSessionInput(formData: FormData) {
 
 export async function logoutAdminAction() {
   await clearAdminSession();
-  redirect("/admin/login");
+  redirect("/");
 }
 
 export async function createClassSessionAction(formData: FormData) {
