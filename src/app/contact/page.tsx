@@ -1,6 +1,12 @@
 import { Container, PrimaryButton, SectionIntro } from "@/components/ui";
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  const { error } = await searchParams;
+
   return (
     <section className="py-20 sm:py-24">
       <Container>
@@ -46,28 +52,42 @@ export default function ContactPage() {
 
             <div className="rounded-[2rem] border border-white/90 bg-white p-8 shadow-[0_25px_70px_rgba(15,23,42,0.06)] sm:p-10">
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-rose-500">Inquiry Form</p>
-              <h2 className="mt-4 text-2xl font-semibold text-slate-900">Simple placeholder form for Phase 1</h2>
-              <form className="mt-6 space-y-4">
+              <h2 className="mt-4 text-2xl font-semibold text-slate-900">Send us a message</h2>
+              <p className="mt-3 text-base leading-7 text-slate-600">
+                Your inquiry will be sent directly to the Zoho form connected to A Mother Choice.
+              </p>
+              {error ? (
+                <div className="mt-4 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
+                  We could not send your message just now. Please try again.
+                </div>
+              ) : null}
+              <form action="/api/contact-inquiry" method="POST" className="mt-6 space-y-4">
                 <input
                   type="text"
+                  name="name"
                   placeholder="Your Name"
+                  required
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none"
                 />
                 <input
                   type="email"
+                  name="email"
                   placeholder="Email Address"
+                  required
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none"
                 />
                 <textarea
                   rows={5}
+                  name="message"
                   placeholder="How can we help?"
+                  required
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none"
                 />
                 <button
-                  type="button"
+                  type="submit"
                   className="inline-flex items-center justify-center rounded-full bg-[var(--color-mauve)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-mauve-dark)]"
                 >
-                  Send Message (Phase 1 Placeholder)
+                  Send Message
                 </button>
               </form>
             </div>
