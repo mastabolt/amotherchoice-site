@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: "A Mother Choice | Perinatal Education + Support",
   description:
     "A Mother Choice supports both professionals and families with certification-focused trainings, lactation education, postpartum support, and compassionate perinatal guidance.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
