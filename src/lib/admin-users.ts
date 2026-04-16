@@ -190,6 +190,34 @@ export async function updateAdministrator(
   return mapAdminUserRow(result.rows[0]);
 }
 
+export async function updateAdminUserPassword(id: string, passwordHash: string) {
+  const db = getDb();
+  const result = await db.query(
+    `
+      UPDATE "AdminUser"
+      SET "passwordHash" = $2,
+          "updatedAt" = NOW()
+      WHERE id = $1
+      RETURNING
+        id,
+        email,
+        "passwordHash" AS "passwordHash",
+        role,
+        "isActive" AS "isActive",
+        "createdAt" AS "createdAt",
+        "updatedAt" AS "updatedAt",
+        "createdByAdminId" AS "createdByAdminId"
+    `,
+    [id, passwordHash],
+  );
+
+  if (result.rows.length === 0) {
+    return null;
+  }
+
+  return mapAdminUserRow(result.rows[0]);
+}
+
 export async function createSuperAdminIfMissing(input: { email: string; passwordHash: string }) {
   const db = getDb();
   const existing = await db.query(`SELECT id FROM "AdminUser" WHERE role = 'super_admin' LIMIT 1`);

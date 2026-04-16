@@ -10,8 +10,8 @@ import {
   updateClassSession,
   updateClassSessionStatus,
 } from "@/lib/class-sessions";
-import { createAdministrator, updateAdministrator } from "@/lib/admin-users";
-import { clearAdminSession, requireAdminSession, requireSuperAdmin } from "@/lib/admin-auth";
+import { createAdministrator, updateAdministrator, updateAdminUserPassword } from "@/lib/admin-users";
+import { authenticateAdmin, clearAdminSession, requireAdminSession, requireSuperAdmin } from "@/lib/admin-auth";
 
 function parseRequiredString(formData: FormData, key: string) {
   const value = formData.get(key);
@@ -84,6 +84,30 @@ function parseClassSessionInput(formData: FormData) {
 export async function logoutAdminAction() {
   await clearAdminSession();
   redirect("/");
+}
+
+export async function updateOwnPasswordAction(formData: FormData) {
+  const session = await requireAdminSession();
+  const currentPassword = parseRequiredString(formData, "currentPassword");
+  const newPassword = parseRequiredString(formData, "newPassword");
+  const confirmPassword = parseRequiredString(formData, "confirmPassword");
+
+  if (newPassword.length < 8) {
+    redirect("/admin/password?error=length");
+  }
+
+  if (newPassword !== confirmPassword) {
+    redirect("/admin/password?error=match");
+  }
+
+  const adminUser = await authenticateAdmin(session.email, currentPassword);
+
+  if (!adminUser || adminUser.id !== session.adminUserId) {
+    redirect("/admin/password?error=current");
+  }
+
+  await updateAdminUserPassword(session.adminUserId, await bcrypt.hash(newPassword, 10));
+  redirect("/admin/password?updated=1");
 }
 
 export async function createClassSessionAction(formData: FormData) {

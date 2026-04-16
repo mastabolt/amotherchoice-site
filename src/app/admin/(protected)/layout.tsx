@@ -42,6 +42,12 @@ export default async function AdminProtectedLayout({ children }: { children: Rea
                   Administrators
                 </Link>
               ) : null}
+              <Link
+                href="/admin/password"
+                className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-[var(--color-mauve)] hover:text-[var(--color-mauve-dark)]"
+              >
+                Change Password
+              </Link>
               <form action="/admin/logout" method="post">
                 <button
                   type="submit"
