@@ -1,9 +1,13 @@
+import { submitContactInquiryAction } from "@/app/contact/actions";
 import { Container, PrimaryButton, SectionIntro } from "@/components/ui";
 
-const ZOHO_INQUIRY_FORM_URL =
-  "https://forms.zohopublic.com/nutreevit1/form/inquiry/formperma/CCLgW3ogrvNOnd1ja2X3jVcIGdXmX2wEj0KUssovukQ";
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  const { error } = await searchParams;
 
-export default function ContactPage() {
   return (
     <section className="py-20 sm:py-24">
       <Container>
@@ -51,23 +55,42 @@ export default function ContactPage() {
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-rose-500">Inquiry Form</p>
               <h2 className="mt-4 text-2xl font-semibold text-slate-900">Send us a message</h2>
               <p className="mt-3 text-base leading-7 text-slate-600">
-                This form is now loaded directly from Zoho so submissions go straight into your inquiry form.
+                Your inquiry will be submitted to Zoho and then you will be taken to a confirmation page.
               </p>
-              <div className="mt-6 overflow-hidden rounded-[1.5rem] border border-slate-200 bg-slate-50">
-                <iframe
-                  src={ZOHO_INQUIRY_FORM_URL}
-                  title="A Mother Choice Inquiry Form"
-                  className="min-h-[760px] w-full bg-white"
+              {error ? (
+                <div className="mt-4 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
+                  We could not send your message just now. Please try again.
+                </div>
+              ) : null}
+              <form action={submitContactInquiryAction} className="mt-6 space-y-4">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none"
                 />
-              </div>
-              <a
-                href={ZOHO_INQUIRY_FORM_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-5 inline-flex text-sm font-semibold text-[var(--color-mauve)] transition hover:text-[var(--color-mauve-dark)]"
-              >
-                Open the form in a new tab
-              </a>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  required
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none"
+                />
+                <textarea
+                  rows={5}
+                  name="message"
+                  placeholder="How can we help?"
+                  required
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none"
+                />
+                <button
+                  type="submit"
+                  className="inline-flex items-center justify-center rounded-full bg-[var(--color-mauve)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-mauve-dark)]"
+                >
+                  Send Message
+                </button>
+              </form>
             </div>
           </div>
         </div>
