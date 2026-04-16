@@ -19,7 +19,25 @@ function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function getTrustedOrigin(value: string | null) {
+  if (!value) {
+    return null;
+  }
+
+  try {
+    return new URL(value).origin;
+  } catch {
+    return null;
+  }
+}
+
 function getRequestOrigin(request: NextRequest) {
+  const explicitOrigin = getTrustedOrigin(request.headers.get("x-site-origin"));
+
+  if (explicitOrigin) {
+    return explicitOrigin;
+  }
+
   const forwardedProto = request.headers.get("x-forwarded-proto");
   const forwardedHost = request.headers.get("x-forwarded-host");
 
@@ -27,10 +45,16 @@ function getRequestOrigin(request: NextRequest) {
     return `${forwardedProto}://${forwardedHost}`;
   }
 
-  const originHeader = request.headers.get("origin");
+  const originHeader = getTrustedOrigin(request.headers.get("origin"));
 
   if (originHeader) {
     return originHeader;
+  }
+
+  const refererOrigin = getTrustedOrigin(request.headers.get("referer"));
+
+  if (refererOrigin) {
+    return refererOrigin;
   }
 
   return request.nextUrl.origin;

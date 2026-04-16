@@ -34,6 +34,7 @@ export function RegistrationCheckoutForm({
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "x-site-origin": window.location.origin,
         },
         body: JSON.stringify({
           classSessionId,
