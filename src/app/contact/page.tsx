@@ -1,13 +1,7 @@
-import { submitContactInquiryAction } from "@/app/contact/actions";
+import { ContactForm } from "@/components/contact/contact-form";
 import { Container, PrimaryButton, SectionIntro } from "@/components/ui";
 
-export default async function ContactPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ error?: string }>;
-}) {
-  const { error } = await searchParams;
-
+export default function ContactPage() {
   return (
     <section className="py-20 sm:py-24">
       <Container>
@@ -57,40 +51,7 @@ export default async function ContactPage({
               <p className="mt-3 text-base leading-7 text-slate-600">
                 Your inquiry will be submitted to Zoho and then you will be taken to a confirmation page.
               </p>
-              {error ? (
-                <div className="mt-4 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
-                  We could not send your message just now. Please try again.
-                </div>
-              ) : null}
-              <form action={submitContactInquiryAction} className="mt-6 space-y-4">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  required
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  required
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none"
-                />
-                <textarea
-                  rows={5}
-                  name="message"
-                  placeholder="How can we help?"
-                  required
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none"
-                />
-                <button
-                  type="submit"
-                  className="inline-flex items-center justify-center rounded-full bg-[var(--color-mauve)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-mauve-dark)]"
-                >
-                  Send Message
-                </button>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </div>

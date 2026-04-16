@@ -15,15 +15,6 @@ function splitName(fullName: string) {
   };
 }
 
-function redirectRelative(location: string) {
-  return new NextResponse(null, {
-    status: 303,
-    headers: {
-      Location: location,
-    },
-  });
-}
-
 export async function POST(request: Request) {
   const formData = await request.formData();
   const fullName = String(formData.get("name") ?? "").trim();
@@ -31,7 +22,7 @@ export async function POST(request: Request) {
   const message = String(formData.get("message") ?? "").trim();
 
   if (!fullName || !email || !message) {
-    return redirectRelative("/contact?error=1");
+    return NextResponse.json({ ok: false, error: "missing_fields" }, { status: 400 });
   }
 
   const { firstName, lastName } = splitName(fullName);
@@ -57,11 +48,11 @@ export async function POST(request: Request) {
     });
 
     if (!response.ok) {
-      return redirectRelative("/contact?error=1");
+      return NextResponse.json({ ok: false, error: "zoho_failed" }, { status: 502 });
     }
   } catch {
-    return redirectRelative("/contact?error=1");
+    return NextResponse.json({ ok: false, error: "request_failed" }, { status: 502 });
   }
 
-  return redirectRelative("/thank-you?type=contact");
+  return NextResponse.json({ ok: true });
 }
