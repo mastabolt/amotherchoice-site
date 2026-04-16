@@ -83,7 +83,7 @@ function parseClassSessionInput(formData: FormData) {
 
 export async function logoutAdminAction() {
   await clearAdminSession();
-  redirect("/");
+  redirect("/?logged_out=1");
 }
 
 export async function updateOwnPasswordAction(formData: FormData) {

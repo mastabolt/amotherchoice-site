@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ReactNode } from "react";
+import { logoutAdminAction } from "@/app/admin/actions";
 import { Container } from "@/components/ui";
 import { requireAdminSession } from "@/lib/admin-auth";
 
@@ -48,7 +49,7 @@ export default async function AdminProtectedLayout({ children }: { children: Rea
               >
                 Change Password
               </Link>
-              <form action="/admin/logout" method="post">
+              <form action={logoutAdminAction}>
                 <button
                   type="submit"
                   className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-rose-400 hover:text-rose-600"

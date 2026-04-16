@@ -5,11 +5,22 @@ import { Container, PrimaryButton, SecondaryButton } from "@/components/ui";
 
 const featuredSessions = classSessions.slice(0, 2);
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ logged_out?: string }>;
+}) {
+  const { logged_out: loggedOut } = await searchParams;
+
   return (
     <>
       <section className="relative overflow-hidden py-16 sm:py-20">
         <Container>
+          {loggedOut ? (
+            <div className="mb-8 rounded-[1.5rem] border border-emerald-200 bg-emerald-50 px-5 py-4 text-sm font-medium text-emerald-700">
+              You have successfully logged out.
+            </div>
+          ) : null}
           <div className="grid items-start gap-14 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <div className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/80 p-3 shadow-[0_20px_50px_rgba(15,23,42,0.06)]">
